@@ -12,7 +12,7 @@
 
         <TextView
 
-            android:id="@+id/signup"
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -146,7 +146,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="50dp"
             android:text="Forget password"
-            app:layout_constraintBottom_toTopOf="@+id/signup"
+            app:layout_constraintBottom_toTopOf="@+id/login"
             app:layout_constraintEnd_toEndOf="@+id/signup_btn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
