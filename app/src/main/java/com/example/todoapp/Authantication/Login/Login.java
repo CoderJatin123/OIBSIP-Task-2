@@ -62,7 +62,7 @@ public class Login extends Fragment {
         email.setError("Incorrect Email");
     }
     public void PasswordError(){
-        password.setError("Incorrect Email");
+        password.setError("Incorrect Password");
     }
 
 }

@@ -10,16 +10,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.todoapp.Authantication.Login.Login;
 import com.example.todoapp.Authantication.Signup.Signup;
 import com.example.todoapp.MainActivity;
+import com.example.todoapp.Model.Todo;
 import com.example.todoapp.Model.User;
 import com.example.todoapp.R;
 
 public class AuthActivity extends AppCompatActivity {
 
-    private boolean isAuth=false;
+
     private FragmentManager fragmentManager;
     private Login login;
     private Signup signup;
@@ -32,10 +35,15 @@ public class AuthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auth);
 
         init(this);
-        if(!isAuth){
+
+        Log.d("TAG", "onCreate: "+checkLogin());
+
+        if(!checkLogin()){
             login=new Login();
             loadFragment(login);
         }
+        else
+            OnAuthCompleted();
     }
 
     private void init(Activity activity){
@@ -44,7 +52,7 @@ public class AuthActivity extends AppCompatActivity {
     editor = sharedPref.edit();
     }
 
-    private boolean checkAuth() {
+    private boolean checkAuthCredential() {
      String email=sharedPref.getString("User_email",null);
      String pass=sharedPref.getString("User_pass",null);
 
@@ -90,9 +98,11 @@ public class AuthActivity extends AppCompatActivity {
 
     public void createUser(String name, String email, String pass){
 
+
         editor.putString("User_name", name);
         editor.putString("User_email",email);
         editor.putString("User_pass",pass);
+        editor.putBoolean("logedin",true);
         editor.apply();
         OnAuthCompleted();
     }
@@ -100,14 +110,18 @@ public class AuthActivity extends AppCompatActivity {
 
 
     void OnAuthCompleted(){
+
         Intent intent=new Intent(this, MainActivity.class);
         startActivity(intent);
-        activity.finish();
     }
 
     public void onLogin(){
-        if(checkAuth()){
+        if(checkAuthCredential()){
             OnAuthCompleted();
         }
+    }
+
+    public boolean checkLogin(){
+      return sharedPref.getBoolean("logedin",false);
     }
 }
