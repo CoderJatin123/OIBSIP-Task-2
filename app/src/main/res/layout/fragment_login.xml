@@ -24,20 +24,21 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="165dp"
-            android:layout_height="187dp"
-            android:src="@drawable/hero"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="Hero images"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/app_icon"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="293dp"
+            android:layout_marginTop="100dp"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent=".4"
             app:layout_constraintTop_toTopOf="parent" />
@@ -83,6 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/email_edittext"
+                android:inputType="textEmailAddress"
                 android:hint="Email" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,6 +106,7 @@
                 android:id="@+id/password_edittext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPassword"
                 android:hint="Password" />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="text_primary">#555555</color>
+    <color name="text_hint">#6E6E6E</color>
+    <color name="sheet_color_bg">#FFFF</color>
+    <color name="dark_pink">#BD18AF</color>
+    <color name="light_red">#FD55A4</color>
+    <color name="dark_red">#C54380</color>
+    <color name="pink">#FD41E7</color>
 </resources>

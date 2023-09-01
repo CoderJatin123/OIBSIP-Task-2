@@ -1,7 +1,17 @@
 package com.example.todoapp.Model;
 
+import com.noodle.Id;
+
 public class Todo {
+
+    @Id
+    private long id;
     private String title, note;
+
+    public long getId() {
+        return id;
+    }
+
     private boolean isChecked=false;
 
     public String getTitle() {

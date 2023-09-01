@@ -38,7 +38,7 @@ public class Signup extends Fragment {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((AuthActivity)getActivity()).onLogin();
+                ((AuthActivity)getActivity()).loadLogin();
             }
         });
 

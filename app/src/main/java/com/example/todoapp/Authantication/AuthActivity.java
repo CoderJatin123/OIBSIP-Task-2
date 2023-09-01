@@ -28,35 +28,49 @@ public class AuthActivity extends AppCompatActivity {
     private Signup signup;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
-    private Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
 
-        init(this);
+        init();
 
-        Log.d("TAG", "onCreate: "+checkLogin());
+        Intent intent =getIntent();
 
-        if(!checkLogin()){
-            login=new Login();
+        if (intent!=null) {
+            String tag = intent.getStringExtra("TAG");
+            if (tag != null && tag.equals("TAG_LOGOUT")) {
+                logout();
+            }
+            if (checkLogin()) {
+                    OnAuthCompleted();
+                }
+
+            login = new Login();
             loadFragment(login);
-        }
-        else
-            OnAuthCompleted();
+
+            }
+
+
+
+
     }
 
-    private void init(Activity activity){
+    private void init(){
         fragmentManager= getSupportFragmentManager();
-    sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+    sharedPref = getSharedPreferences("mySharedPreferences",MODE_PRIVATE);
     editor = sharedPref.edit();
+
     }
 
     private boolean checkAuthCredential() {
+
      String email=sharedPref.getString("User_email",null);
      String pass=sharedPref.getString("User_pass",null);
 
      if(email==null || pass==null){
+         Toast.makeText(this, "Account not Available", Toast.LENGTH_SHORT).show();
          return false;
      }
      else {
@@ -92,7 +106,9 @@ public class AuthActivity extends AppCompatActivity {
 
     public void loadLogin(){
         if(login == null)
-            login=new Login();
+        {
+             login=new Login();
+        }
         loadFragment(login);
     }
 
@@ -113,15 +129,27 @@ public class AuthActivity extends AppCompatActivity {
 
         Intent intent=new Intent(this, MainActivity.class);
         startActivity(intent);
+
     }
 
     public void onLogin(){
         if(checkAuthCredential()){
+            editor.putBoolean("logedin",true);
+            editor.apply();
             OnAuthCompleted();
         }
     }
 
     public boolean checkLogin(){
-      return sharedPref.getBoolean("logedin",false);
+        boolean isLogin=sharedPref.getBoolean("logedin",false);
+      return isLogin;
+    }
+
+    private void logout(){
+
+        editor.putBoolean("logedin",false);
+        editor.commit();
+        editor.apply();
+
     }
 }

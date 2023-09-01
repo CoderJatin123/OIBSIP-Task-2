@@ -1,5 +1,7 @@
 package com.example.todoapp.Model;
 
+import com.noodle.Id;
+
 import java.util.List;
 
 public class Collections {
@@ -8,6 +10,13 @@ public class Collections {
         this.todoList = todoList;
         this.description = description;
         this.name = name;
+    }
+
+    @Id
+    private long id;
+
+    public long getId() {
+        return id;
     }
 
     private List<Todo> todoList;

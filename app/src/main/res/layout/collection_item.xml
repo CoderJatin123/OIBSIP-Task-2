@@ -5,13 +5,32 @@
     android:id="@+id/collection_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
     app:cardCornerRadius="8dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:visibility="gone"
+            android:id="@+id/collection_selection_radio_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="center_vertical"
+            >
+
+        </RadioButton>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/collection_name"
@@ -30,7 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="2"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="20dp"
             android:text="collection descripition"
             android:textSize="16sp"
@@ -42,5 +61,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    </LinearLayout>
 </androidx.cardview.widget.CardView>
