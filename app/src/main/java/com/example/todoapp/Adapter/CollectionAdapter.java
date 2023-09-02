@@ -46,17 +46,6 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
         holder.title.setText(collectionsList.get(position).getName());
         holder.description.setText(collectionsList.get(position).getDescription());
 
-//        viewModel.getIsSelectionEnabled().observe(, new Observer<Boolean>() {
-//            @Override
-//            public void onChanged(Boolean aBoolean) {
-//                if(aBoolean){
-//                    holder.radioButton.setVisibility(View.VISIBLE);
-//                }else {
-//                    holder.radioButton.setVisibility(View.GONE);
-//                }
-//            }
-//        });
-
     }
 
     @Override
